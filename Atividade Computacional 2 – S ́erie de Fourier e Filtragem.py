@@ -2,11 +2,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Parâmetros do sinal
 T = 6.0
 w0 = 2 * np.pi / T
 
-# Função para definir o sinal original x(t) em um período
+# sinal original x(t) em um período
 def x_t(t):
     conds = [
         (t >= -2) & (t < -1),
@@ -20,7 +19,7 @@ def x_t(t):
     ]
     return np.piecewise(t, conds, funcs)
 
-# Função para calcular os coeficientes a_k
+# calcular os coeficientes a_k
 def get_ak(k):
     if k == 0:
         return 2.0/3.0
@@ -38,7 +37,7 @@ def x_tilde_N(t, N, coeffs):
         sinal_aprox += coeffs[k] * np.exp(1j * k * w0 * t)
     return sinal_aprox.real
 
-# Vetor de tempo para um período
+
 t = np.linspace(-3, 3, 1000)
 xt = x_t(t)
 
